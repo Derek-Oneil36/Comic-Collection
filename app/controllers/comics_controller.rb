@@ -1,4 +1,4 @@
-class ComicsController < ApplicationController
+class ComicsController < OpenReadController
   before_action :set_comic, only: %i[show update destroy]
 
   # GET /comics
