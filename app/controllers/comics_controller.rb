@@ -1,4 +1,6 @@
-class ComicsController < ProtectedController
+# frozen_string_literal: true
+
+class ComicsController < OpenReadController
   before_action :set_comic, only: %i[show update destroy]
 
   # GET /comics
@@ -15,7 +17,7 @@ class ComicsController < ProtectedController
 
   # POST /comics
   def create
-    @comic = Comic.new(comic_params)
+    @comic = current_user.comics.build(comic_params)
 
     if @comic.save
       render json: @comic, status: :created
@@ -41,7 +43,7 @@ class ComicsController < ProtectedController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comic
-      @comic = Comic.find(params[:id])
+      @comic = current_user.comic.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
