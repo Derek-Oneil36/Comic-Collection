@@ -5,7 +5,7 @@ class ComicsController < OpenReadController
 
   # GET /comics
   def index
-    @comics = Comic.all
+    @comics = Comic.all()
 
     render json: @comics
   end
