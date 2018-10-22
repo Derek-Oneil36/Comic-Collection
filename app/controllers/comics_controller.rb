@@ -43,7 +43,7 @@ class ComicsController < OpenReadController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comic
-      @comic = current_user.comic.find(params[:id])
+      @comic = current_user.comics.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
